@@ -1,0 +1,28 @@
+body {
+  background-color: #ffd200;
+  background-image: url("/assets/img/mobile/bg.png");
+  background-size: contain;
+  text-align: center; }
+
+img {
+  display: block;
+  margin: auto; }
+
+.logo {
+  margin-top: 28px; }
+
+.coming-soon {
+  position: relative;
+  top: -13px; }
+
+.desktop {
+  position: relative;
+  top: -29px; }
+
+.phone {
+  position: absolute;
+  top: 176px;
+  left: 50%;
+  margin-left: -138px; }
+
+/*# sourceMappingURL=mobile.css.map */

@@ -1,0 +1,32 @@
+<div style="position: relative">
+    <img src="/assets/img/channels/{{ active_channel }}/{{ channel.image }}" alt="{{ channel.title }}">
+    <div class="title">
+        <img src="/assets/img/channels/{{ active_channel }}/{{ channel.icon }}" alt="Icon for {{ channel.title }}">
+        <span>{{ channel.title }}</span>
+    </div>
+
+    {% if channel.playlistId is defined %}
+        {% set link = path_for('playerPage', {'channel': active_channel, 'playlistId': channel.playlistId}) %}
+    {% else %}
+
+        {% set titleKey = channel.title | lower %}
+
+        {% if categories[titleKey] is defined %}
+            {%  set playlistId = categories[titleKey] %}
+        {% elseif categories[titleKey | replace({'&': 'and'})] is defined %}
+            {%  set playlistId = categories[titleKey | replace({'&': 'and'})] %}
+        {% else %}
+            {%  set playlistId = null %}
+        {% endif %}
+
+        {% set link = path_for('playerPage', {'channel': active_channel, 'playlistId': playlistId}) %}
+    {% endif %}
+
+    <a class="hover" onclick='trackOutboundLink({{ link | json_encode | raw }}, "Player", "watchingInTvMode", {{playlist.title | json_encode | raw}}); return false;' href="{{ link }}">
+        <span class="wrapper">
+            <span class="play {{ active_channel }}">
+                <span class="tick"></span>
+            </span>
+        </span>
+    </a>
+</div>

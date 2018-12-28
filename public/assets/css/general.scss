@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic');
+$blue-link-color: #00e4ff;
+$green-link-color: #00e777;
+$yellow-link-color: #ffc301;
+$greenyellow-link-color: #aeff00;
+$red-link-color: #e8013d;
+$blueviolet-link-color: #7f20fc;
+
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background-color: #151726;
+}
+.header {
+  position: relative;
+
+  h2 {
+    font-weight: 900;
+    font-size: 20pt;
+  }
+  .now-playing {
+    position: absolute;
+    font-weight: bold;
+    height: 68px;
+    line-height: 68px;
+    top: 0;
+    left: 30px;
+    width: calc(100% - 800px);
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    strong {
+      font-size: 14px;
+
+      &.music {
+        color: $green-link-color;
+      }
+      &.tv {
+        color: $blue-link-color;
+      }
+      &.sports {
+        color: $yellow-link-color;
+      }
+      &.kids {
+        color: $greenyellow-link-color;
+      }
+      &.news {
+        color: $red-link-color;
+      }
+      &.vlogs {
+        color: $blueviolet-link-color;
+      }
+    }
+  }
+  .menu {
+    height: 40px;
+    line-height: 40px;
+    margin-top: 15px;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+
+    a {
+      margin: 0 25px;
+      font-weight: 900;
+      font-size: 12pt;
+      color: $green-link-color;
+
+      line-height: 10px;
+      display: inline-block;
+
+      &.active, &:hover {
+        border-bottom: 3px solid $green-link-color;
+
+        &.yellow {
+          border-color: $yellow-link-color;
+        }
+        &.blue {
+          border-color: $blue-link-color;
+        }
+        &.greenyellow {
+          border-color: $greenyellow-link-color;
+        }
+        &.red {
+          border-color: $red-link-color;
+        }
+        &.blueviolet {
+          border-color: $blueviolet-link-color;
+        }
+      }
+      &:first-child:hover {
+        border: none;
+      }
+
+      &.yellow {
+        color: $yellow-link-color;
+      }
+      &.blue {
+        color: $blue-link-color;
+      }
+      &.greenyellow {
+        color: $greenyellow-link-color;
+      }
+      &.red {
+        color: $red-link-color;
+      }
+      &.blueviolet {
+        color: $blueviolet-link-color;
+      }
+    }
+  }
+
+  .big-slider {
+    height: 850px;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    .clickable-item {
+      position: absolute;
+      bottom: 50px;
+      width: 250px;
+      left: 50%;
+      margin-left: -125px;
+      //margin: 0 auto;
+
+      .number {
+        position: absolute;
+        left: -40px;
+        top: 8px;
+        color: $blue-link-color;
+        font-size: 20px;
+        font-weight: 900;
+        border-bottom: 3px solid $blue-link-color;
+      }
+      .category {
+        color: $blue-link-color;
+        font-weight: 900;
+        line-height: 40px;
+      }
+      .title {
+        font-weight: 700;
+        font-size: 17pt;
+      }
+    }
+  }
+}
+
+.carousel {
+  .item {
+    .bg-image {
+      height: 850px;
+      //background-image: url(/assets/img/frontpage-big-pic.jpg);
+      background-position: center center;
+      background-size: cover;
+    }
+    .clickable-item {
+      position: absolute;
+      bottom: 50px;
+      width: 250px;
+      left: 50%;
+      margin-left: -125px;
+      text-align: left;
+      color: white;
+      cursor: pointer;
+
+/*       &:hover {
+        text-decoration: none;
+        .category, .title {
+          border-bottom: 1px solid $blue-link-color;
+        }
+      }  */
+      //margin: 0 auto;
+
+      .number {
+        position: absolute;
+        left: -40px;
+        top: 8px;
+        color: $blue-link-color;
+        font-size: 20px;
+        font-weight: 900;
+        border-bottom: 3px solid $blue-link-color;
+      }
+      .category {
+        color: $blue-link-color;
+        display: inline-block;
+        font-weight: 900;
+        line-height: 40px;
+        text-transform: uppercase;
+      }
+      h1.title {
+        margin: 0;
+        padding: 0;
+        display: block;
+        font-weight: 700;
+        font-size: 17pt;
+      }
+    }
+  }
+}
+.footer {
+  background-color: #11101e;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  strong {
+    display: block;
+    font-size: 14pt;
+    margin-bottom: 35px;
+  }
+  a {
+    display: block;
+    color: white;
+    line-height: 28px;
+    font-weight: 500;
+  }
+  .social {
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+.copyright {
+  background-color: #11101e;
+  border-top: 1px solid #1e1f33;
+  padding: 50px 0;
+  font-size: 10pt;
+  color: #979bbe;
+}
+.bottom-shapes {
+  position: absolute;
+  bottom: 0;
+  //z-index: 100;
+  width: 100%;
+}
+.red-block {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ea2400+0,c80d22+47,b30038+100 */
+  background: #ea2400; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #ea2400 0%, #c80d22 47%, #b30038 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #ea2400 0%,#c80d22 47%,#b30038 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #ea2400 0%,#c80d22 47%,#b30038 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea2400', endColorstr='#b30038',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  padding: 70px 0 75px;
+
+  .row > div {
+    position: relative;
+/*     height: 305px; */
+  }
+  .breaker-image {
+    height: 305px;
+    width: 100%;
+    max-width: 490px;
+    background-size: cover;
+    background-position: center center;
+    cursor: pointer;
+
+    .play {
+      background: url(/assets/img/breaker-play-btn.png);
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+      -webkit-box-shadow: 0px 0px 39px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 39px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 39px 0px rgba(0,0,0,0.75);
+    }
+  }
+  .category {
+    font-size: 12pt;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .title {
+    font-weight: 900;
+    font-size: 28pt;
+    letter-spacing: 2px;
+  }
+  .text {
+    line-height: 25px;
+    font-size: 12pt;
+  }
+  .btn {
+/*     position: absolute; */
+/*     bottom: 0; */
+    margin-top: 25px;
+  }
+}
+.slider-block {
+  height: 450px;
+  padding-top: 70px;
+
+
+  h2 {
+    margin: 0 0 40px 0;
+  }
+}
+.playlist {
+  cursor: pointer;
+  text-align: center;
+  //margin-bottom: 40px;
+
+  .thumb {
+    margin: -10% 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .title {
+    text-align: left;
+    padding-top: 10px;
+    font-size: 11pt;
+    letter-spacing: 1px;
+    font-weight: 900;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    &.sports {
+      color: $yellow-link-color;
+    }
+    &.tv {
+      color: $blue-link-color;
+    }
+    &.music {
+      color: $green-link-color;
+    }
+    &.kids {
+      color: $greenyellow-link-color;
+    }
+    &.news {
+      color: $red-link-color;
+    }
+    &.vlogs {
+      color: $blueviolet-link-color;
+    }
+  }
+  &:hover .play-btn {
+    opacity: 1;
+  }
+  .play-btn {
+    height: 56px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    opacity: 0.8;
+    max-height: 100%;
+  }
+  //.thumb {
+  //  border: 2px solid white;
+  //}
+}
+img.shapes {
+  width: 100%;
+  position: absolute;
+  top: 780px;
+}
+.btn.rounded-transparent {
+  font-size: 11pt;
+  border: 1px solid #373b54;
+  border-radius: 30px;
+  padding: 15px 50px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.music {
+    color: $green-link-color;
+    border-bottom: 1px solid $green-link-color;
+  }
+
+  &.white {
+    color: white;
+    border-color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+@import "homepage";
+@import "channel";
+@import "player";
+@import "about";
+@import "contact";
+

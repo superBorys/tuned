@@ -1,0 +1,17 @@
+<div class="slider-block">
+    <div class="container">
+        <h2>{{ group | upper }}</h2>
+        <div class="row" id="slider{{ sliderIndex }}">
+            {% for playlist in playlists %}
+                <div class="col-xs-4 playlist" >
+                    <div style="position: relative; overflow: hidden">
+                        {% set link = path_for('playerPage', {'channel': active_channel, 'playlistId': playlist.id}) %}
+                        <a onclick='trackOutboundLink({{ link | json_encode | raw }}, "Player", "watchingInTvMode", {{playlist.title | json_encode | raw}}); return false;' href="{{ link }}"><img style="z-index: 100" class="play-btn" alt="Play button" src="assets/img/breaker-play-btn.png"></a>
+                        <img style="width: 100%" class="thumb" alt="Thumbnail for {{playlist.title}}" src="{{playlist.thumbnail}}">
+                    </div>
+                    <div class="title {{ playlist.channel }}">{{playlist.title}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

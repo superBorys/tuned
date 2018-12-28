@@ -1,0 +1,1157 @@
+{% set type = 'channel' %}
+
+{% if active_channel == 'sports' %}
+    {% set title = 'Sports Channel - Tuned Rocks' %}
+{% elseif active_channel == 'tv' %}
+    {% set title = 'TV Channel - Tuned Rocks' %}
+{% elseif active_channel == 'music' %}
+    {% set title = 'Music Channel - Tuned Rocks' %}
+{% endif %}
+
+{% extends 'base.twig' %}
+
+{% block specialIncludes %}
+    <script src="/assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+{% endblock %}
+
+{% block content %}
+
+{% if active_channel == 'music' or active_channel == 'video' %}
+    {% set channelsTop = [
+        {
+        'image': 'MUSIC_Rock_Background_541x981.jpg',
+        'title': 'Rock',
+        'icon': 'icons/Icon_Music_Rock.png'
+        },
+        {
+        'image': 'MUSIC_Pop_Background_541x981.jpg',
+        'title': 'Pop',
+        'icon': 'icons/Icon_Music_Pop.png'
+        },
+        {
+        'image': 'MUSIC_DanceElectronic_Background_541x981.jpg',
+        'title': 'Dance/Electronic',
+        'icon': 'icons/Icon_Music_DanceElectronic.png'
+        },
+        {
+        'image': 'MUSIC_Metal_Background_541x981.jpg',
+        'title': 'Metal',
+        'icon': 'icons/Icon_Music_Metal.png'
+        },
+        {
+        'image': 'MUSIC_CountryFolk_Background_1100x1106.jpg',
+        'title': 'Country/Folk',
+        'icon': 'icons/Icon_Music_CountryFolk.png'
+        },
+        {
+        'image': 'MUSIC_HipHopRap_Background_536x536.jpg',
+        'title': 'Hip-Hop/Rap',
+        'icon': 'icons/Icon_Music_HipHopRap.png'
+        },
+        {
+        'image': 'MUSIC_AltIndie_Background_536x536.jpg',
+        'title': 'Alt/Indie',
+        'icon': 'icons/Icon_Music_AltIndie.png'
+        },
+        {
+        'image': 'MUSIC_Mood_Background_536x536.jpg',
+        'title': 'Mood',
+        'icon': 'icons/Icon_Music_Mood.png'
+        },
+        {
+        'image': 'MUSIC_Reggae_Background_536x536.jpg',
+        'title': 'Reggae',
+        'icon': 'icons/Icon_Music_Reggae.png'
+        }
+    ] %}
+
+    {% set channelsTrending = [
+        {
+        'image': 'MUSIC_NewMusicThisWeek_Background_541x981.jpg',
+        'title': 'New Music This Week',
+        'icon': 'icons/Icon_Music_NewMusicThisWeek.png',
+        'playlistId': 'f3a9776f9cb2ffe9dbc1137de6fa6912'
+        },
+        {
+        'image': 'MUSIC_NewRock_Background_541x981.jpg',
+        'title': 'New Rock',
+        'icon': 'icons/Icon_Music_NewRock.png',
+        'playlistId': 'PLjEqPWApF6qWod0AIyqSWlRYfS8uP-9BQ'
+        },
+        {
+        'image': 'MUSIC_NewEDMBeats_Background_541x981.jpg',
+        'title': 'New EDM Beats',
+        'icon': 'icons/Icon_Music_NewEDMBeats.png',
+        'playlistId': 'e15e94464e5df52bd48841071ecf00b0'
+        },
+        {
+        'image': 'MUSIC_100GreatestMV_Background_541x981.jpg',
+        'title': '100 Greatest Music Videos',
+        'icon': 'icons/Icon_Music_100GreatestMV.png',
+        'playlistId': 'PLjEqPWApF6qVcHkbZ3hc-ysMuKsopewjX'
+        }
+    ] %}
+
+    {% set editorsPick = [
+        {
+        'image': 'MUSIC_Punk_Background_1100x1106.jpg',
+        'title': 'Punk',
+        'icon': 'icons/Icon_Music_Punk.png'
+        },
+        {
+        'image': 'MUSIC_YearsDecades_Background_1100x1106.jpg',
+        'title': 'Years & Decades',
+        'icon': 'icons/Icon_Music_YearsDecades.png'
+        }
+    ] %}
+    {% set otherChannels = [
+        {
+        'image': 'MUSIC_Blues_Background_536x536.jpg',
+        'title': 'Blues',
+        'icon': 'icons/Icon_Music_Blues.png'
+        },
+        {
+        'image': 'MUSIC_Misc_Background_536x536.jpg',
+        'title': 'Misc',
+        'icon': 'icons/Icon_Music_Misc.png'
+        },
+        {
+        'image': 'MUSIC_R-B-Soul_Background_536x536.jpg',
+        'title': 'R&B/Soul',
+        'icon': 'icons/Icon_Music_R-B-Soul.png'
+        },
+        {
+        'image': 'MUSIC_Latin_Background_536x536.jpg',
+        'title': 'Latin',
+        'icon': 'icons/Icon_Music_Latin.png'
+        },
+        {
+        'image': 'MUSIC_SummerFestivals_Background_536x536.jpg',
+        'title': 'Summer Festivals',
+        'icon': 'icons/Icon_Music_SummerFestivals.png'
+        },
+        {
+        'image': 'MUSIC_Jazz_Background_536x536.jpg',
+        'title': 'Jazz',
+        'icon': 'icons/Icon_Music_Jazz.png'
+        },
+        {
+        'image': 'MUSIC_MusiciansChannel_Background_536x536.jpg',
+        'title': 'Musician´s channel',
+        'icon': 'icons/Icon_Music_MusiciansChannel.png'
+        },
+        {
+        'image': 'MUSIC_Others_Background_536x536.jpg',
+        'title': 'Others',
+        'icon': 'icons/Icon_Music_Others.png'
+        }
+    ] %}
+
+    {% elseif active_channel == 'tv'%}
+
+        {% set channelsTop = [
+        {
+        'image': 'TV_People_Background_541x981.jpg',
+        'title': 'People',
+        'icon': 'icons/Icon_TV_People_2.png'
+        },
+        {
+        'image': 'TV_Travel_Background_541x981.jpg',
+        'title': 'Travel',
+        'icon': 'icons/Icon_TV_Travel_2.png'
+        },
+        {
+        'image': 'TV_Workout_Background_541x981.jpg',
+        'title': 'Workout',
+        'icon': 'icons/Icon_TV_Workout_2.png'
+        },
+        {
+        'image': 'TV_Education_Background_541x981.jpg',
+        'title': 'Education',
+        'icon': 'icons/Icon_TV_Education_2.png'
+        },
+        {
+        'image': 'TV_Tech_Background_1110x1106.jpg',
+        'title': 'Tech',
+        'icon': 'icons/Icon_TV_Tech_2.png'
+        },
+        {
+        'image': 'TV_Animation_Background_536x536.jpg',
+        'title': 'Animation',
+        'icon': 'icons/Icon_TV_Animation_2.png'
+        },
+        {
+        'image': 'TV_Nature_Background_536x536.jpg',
+        'title': 'Nature',
+        'icon': 'icons/Icon_TV_Nature_2.png'
+        },
+        {
+        'image': 'TV_Military_Background_536x536.jpg',
+        'title': 'Military',
+        'icon': 'icons/Icon_TV_Military_2.png'
+        },
+        {
+        'image': 'TV_NoStress_Background_536x536.jpg',
+        'title': 'No Stress',
+        'icon': 'icons/Icon_TV_NoStress_2.png'
+        },
+
+        ] %}
+
+        {% set channelsTrending = [
+        {
+        'image': 'TV_PopularRightNow_Background_541x981.jpg',
+        'title': 'Popular Right Now',
+        'icon': 'icons/Icon_TV_PopularRightNow_2.png'
+        },
+        {
+        'image': 'TV_TodaysFunnyClips_Background_541x981.jpg',
+        'title': 'Todays Funny Clips',
+        'icon': 'icons/Icon_TV_TodaysFunnyClips_2.png',
+        'playlistId': 'b04eb237acc43b01ab3d06d3527813a6'
+        },
+        {
+        'image': 'TV_TimelapseVideos_Background_541x981.jpg',
+        'title': 'Timelapse Videos',
+        'icon': 'icons/Icon_TV_TimelapseVideos_2.png',
+        'playlistId': 'PL_JNljaAQ3XI_IQ-H_iRciEt7fZdnTbWC'
+        },
+        {
+        'image': 'TV_CatchUpOnLateNight_Background_541x981.jpg',
+        'title': 'Catch Up On Late Night',
+        'icon': 'icons/Icon_TV_CatchUpOnLateNight_2.png',
+            'playlistId': '8e060de547e009c2161373d077dc1626'
+        },
+        ] %}
+
+        {% set editorsPick = [
+        {
+        'image': 'TV_ConspiracyTheories_Background_1100x1106.jpg',
+        'title': 'Conspiracy Theories',
+        'icon': 'icons/Icon_TV_ConspiracyTheories_2.png'
+        },
+        {
+        'image': 'TV_LifeHacks_Background_1100x1106.jpg',
+        'title': 'Life Hacks',
+        'icon': 'icons/Icon_TV_LifeHacks_2.png'
+        },
+        {
+        'image': 'TV_Games_Background_536x536.jpg',
+        'title': 'Games',
+        'icon': 'icons/Icon_TV_Games_2.png'
+        },
+        {
+        'image': 'TV_Movies_Background_536x536.jpg',
+        'title': 'Movies',
+        'icon': 'icons/Icon_TV_Movies_2.png'
+        },
+        {
+        'image': 'TV_BeautyMakeup_Background_536x536.jpg',
+        'title': 'Beauty & Makeup',
+        'icon': 'icons/Icon_TV_BeautyMakeup_2.png'
+        },
+        {
+        'image': 'TV_Lifestyle_Background_536x536.jpg',
+        'title': 'Lifestyle',
+        'icon': 'icons/Icon_TV_Lifestyle_2.png'
+        },
+        ] %}
+        {% set otherChannels = [
+        {
+        'image': 'TV_ArtsCrafts_Background_536x536.jpg',
+        'title': 'Arts & Crafts',
+        'icon': 'icons/Icon_TV_ArtsCrafts_2.png'
+        },
+        {
+        'image': 'TV_UsCops_Background_536x536.jpg',
+        'title': 'US Cops',
+        'icon': 'icons/Icon_TV_USCops_2.png'
+        },
+        {
+        'image': 'TV_Costumes_Background_536x536.jpg',
+        'title': 'Costumes',
+        'icon': 'icons/Icon_TV_Costumes_2.png'
+        },
+        {
+        'image': 'TV_HomeLiving_Background_536x536.jpg',
+        'title': 'Home&Living',
+        'icon': 'icons/Icon_TV_HomeLiving_2.png'
+        },
+        {
+        'image': 'TV_Food_Background_536x536.jpg',
+        'title': 'Food',
+        'icon': 'icons/Icon_TV_Food_2.png'
+        },
+        {
+        'image': 'TV_EntertainmentNews_Background_536x536.jpg',
+        'title': 'Entertainment News',
+        'icon': 'icons/Icon_TV_EntertainmentNews_2.png'
+        },
+        {
+        'image': 'TV_Training_Background_536x536.jpg',
+        'title': 'Training',
+        'icon': 'icons/Icon_TV_Training_2.png'
+        },
+        {
+        'image': 'TV_TechReviews_Background_536x536.jpg',
+        'title': 'Tech Reviews',
+        'icon': 'icons/Icon_TV_TechReviews_2.png'
+        },
+        {
+        'image': 'TV_Funny_Background_536x536.jpg',
+        'title': 'Funny',
+        'icon': 'icons/Icon_TV_Funny_2.png'
+        },
+        {
+        'image': 'TV_Entertainment_Background_536x536.jpg',
+        'title': 'Entertainment',
+        'icon': 'icons/Icon_TV_Entertainment_2.png'
+        },
+        {
+        'image': 'TV_Science_Background_536x536.jpg',
+        'title': 'Science',
+        'icon': 'icons/Icon_TV_Science_2.png'
+        },
+        ] %}
+    {% elseif active_channel == 'sports'%}
+
+        {% set channelsTop = [
+        {
+        'image': 'SPORTS_Football_Background_440x800.jpg',
+        'title': 'Football',
+        'icon': 'icons/Icon_Sports_Football.png'
+        },
+        {
+        'image': 'SPORTS_Snowboarding_Background_440x800.jpg',
+        'title': 'Snowboarding',
+        'icon': 'icons/Icon_Sports_Snowboarding.png'
+        },
+        {
+        'image': 'SPORTS_FormulaOne_Background_440x800.jpg',
+        'title': 'Formula 1',
+        'icon': 'icons/Icon_Sports_FormulaOne.png'
+        },
+        {
+        'image': 'SPORTS_AmericanFootball_Background_440x800.jpg',
+        'title': 'American Football',
+        'icon': 'icons/Icon_Sports_AmericanFootball.png'
+        },
+        {
+        'image': 'SPORTS_Rally_Background_900x895.jpg',
+        'title': 'Rally',
+        'icon': 'icons/Icon_Sports_Rally.png'
+        },
+        {
+        'image': 'SPORTS_Baseball_Background_440x440.jpg',
+        'title': 'Baseball',
+        'icon': 'icons/Icon_Sports_Baseball.png'
+        },
+        {
+        'image': 'SPORTS_Golf_Background_440x440.jpg',
+        'title': 'Golf',
+        'icon': 'icons/Icon_Sports_Golf.png'
+        },
+        {
+        'image': 'SPORTS_Bodybuilding_Background_440x440.jpg',
+        'title': 'Bodybuilding',
+        'icon': 'icons/Icon_Sports_Bodybuilding.png'
+        },
+        {
+        'image': 'SPORTS_Tennis_Background_440x440.jpg',
+        'title': 'Tennis',
+        'icon': 'icons/Icon_Sports_Tennis.png'
+        },
+
+
+        ] %}
+
+        {% set channelsTrending = [
+        {
+        'image': 'SPORTS_Basketball_Background_440x800.jpg',
+        'title': 'Basketball',
+        'icon': 'icons/Icon_Sports_Basketball.png'
+        },
+        {
+        'image': 'SPORTS_ExtremeSports_Background_440x800.jpg',
+        'title': 'Extreme Sports',
+        'icon': 'icons/Icon_Sports_ExtremeSports.png'
+        },
+        {
+        'image': 'SPORTS_SportNews_Background_440x800.jpg',
+        'title': 'Sport News',
+        'icon': 'icons/Icon_Sports_SportNews.png'
+        },
+        {
+        'image': 'SPORTS_MustWatchPlays_Background_440x800.jpg',
+        'title': 'Must Watch Plays',
+        'icon': 'icons/Icon_Sports_MustWatchPlays.png',
+        'playlistId': 'f4e0faabd9d7dea02d678e0c2e6d56b8'
+        },
+
+        ] %}
+
+        {% set editorsPick = [
+        {
+        'image': 'SPORTS_Boxing_Background_900x895.jpg',
+        'title': 'Boxing',
+        'icon': 'icons/Icon_Sports_Boxing.png'
+        },
+        {
+        'image': 'SPORTS_Motocross_Background_900x895.jpg',
+        'title': 'Motocross',
+        'icon': 'icons/Icon_Sports_Motocross.png'
+        },
+        {
+        'image': 'SPORTS_IceHockey_Background_440x440.jpg',
+        'title': 'Ice Hockey',
+        'icon': 'icons/Icon_Sports_IceHockey.png'
+        },
+        {
+        'image': 'SPORTS_Surfing_Background_440x440.jpg',
+        'title': 'Surfing',
+        'icon': 'icons/Icon_Sports_Surfing.png'
+        },
+        {
+        'image': 'SPORTS_MMA-UFC_Background_440x440.jpg',
+        'title': 'MMA',
+        'icon': 'icons/Icon_Sports_MMA-UFC.png'
+        },
+        {
+        'image': 'SPORTS_Motorsports_Background_440x440.jpg',
+        'title': 'Motorsports',
+        'icon': 'icons/Icon_Sports_Motorsports.png'
+        },
+
+        ] %}
+        {% set otherChannels = [
+        {
+        'image': 'SPORTS_Windsurfing_Background_440x440.jpg',
+        'title': 'Windsurfing',
+        'icon': 'icons/Icon_Sports_Windsurfing.png'
+        },
+        {
+        'image': 'SPORTS_Kitesurfing_Background_440x440.jpg',
+        'title': 'Kitesurfing',
+        'icon': 'icons/Icon_Sports_Kitesurfing.png'
+        },
+        {
+        'image': 'SPORTS_WingsuitFlying_Background_440x440.jpg',
+        'title': 'Wingsuit Flying',
+        'icon': 'icons/Icon_Sports_WingsuitFlying.png'
+        },
+        {
+        'image': 'SPORTS_Parachuting_Background_440x440.jpg',
+        'title': 'Parachuting',
+        'icon': 'icons/Icon_Sports_Parachuting.png'
+        },
+        {
+        'image': 'SPORTS_FieldHockey_Background_440x440.jpg',
+        'title': 'Field Hockey',
+        'icon': 'icons/Icon_Sports_FieldHockey.png'
+        },
+        {
+        'image': 'SPORTS_Judo_Background_440x440.jpg',
+        'title': 'Judo',
+        'icon': 'icons/Icon_Sports_Judo.png'
+        },
+        {
+        'image': 'SPORTS_WaterPolo_Background_440x440.jpg',
+        'title': 'Water Polo',
+        'icon': 'icons/Icon_Sports_WaterPolo.png'
+        },
+        {
+        'image': 'SPORTS_IceSkating_Background_440x440.jpg',
+        'title': 'Ice Skating',
+        'icon': 'icons/Icon_Sports_IceSkating.png'
+        },
+        {
+        'image': 'SPORTS_Volleyball_Background_440x440.jpg',
+        'title': 'Volleyball',
+        'icon': 'icons/Icon_Sports_Volleyball.png'
+        },
+        {
+        'image': 'SPORTS_Cricket_Background_440x440.jpg',
+        'title': 'Cricket',
+        'icon': 'icons/Icon_Sports_Cricket.png'
+        },
+        {
+        'image': 'SPORTS_Futsal_Background_440x440.jpg',
+        'title': 'Futsal',
+        'icon': 'icons/Icon_Sports_Futsal.png'
+        },
+        {
+        'image': 'SPORTS_Gymnastics_Background_440x440.jpg',
+        'title': 'Gymnastics',
+        'icon': 'icons/Icon_Sports_Gymnastics.png'
+        },
+        {
+        'image': 'SPORTS_CyclingTriathlon_Background_440x440.jpg',
+        'title': 'Cycling & Triathlon',
+        'icon': 'icons/Icon_Sports_CyclingTriathlon.png'
+        },
+        {
+        'image': 'SPORTS_Climbing_Background_440x440.jpg',
+        'title': 'Climbing',
+        'icon': 'icons/Icon_Sports_Climbing.png'
+        },
+        {
+        'image': 'SPORTS_Running_Background_440x440.jpg',
+        'title': 'Running',
+        'icon': 'icons/Icon_Sports_Running.png'
+        },
+        {
+        'image': 'SPORTS_TableTennis_Background_440x440.jpg',
+        'title': 'Table Tennis',
+        'icon': 'icons/Icon_Sports_TableTennis.png'
+        },
+        {
+        'image': 'SPORTS_Rugby_Background_440x440.jpg',
+        'title': 'Rugby',
+        'icon': 'icons/Icon_Sports_Rugby.png'
+        },
+        {
+        'image': 'SPORTS_Handball_Background_440x440.jpg',
+        'title': 'Handball',
+        'icon': 'icons/Icon_Sports_Handball.png'
+        },
+        {
+        'image': 'SPORTS_Fishing_Background_440x440.jpg',
+        'title': 'Fishing',
+        'icon': 'icons/Icon_Sports_Fishing.png'
+        },
+
+        ] %}
+    {% elseif active_channel == 'vlogs'%}
+
+        {% set channelsTop = [
+        {
+        'image': 'VLOGS_BeautyVlogs2_Background_440x800.jpg',
+        'title': 'Beauty Vlogs',
+        'icon': 'icons/Icon_Vlogs_BeautyVlogs.png'
+        },
+        {
+        'image': 'VLOGS_FashionVlogs2_Background_440x800.jpg',
+        'title': 'Fashion Vlogs',
+        'icon': 'icons/Icon_Vlogs_Fashion.png'
+        },
+        {
+        'image': 'VLOGS_LifestyleVlogs2_Background_440x800.jpg',
+        'title': 'Lifestyle Vlogs',
+        'icon': 'icons/Icon_Vlogs_Lifestyle.png'
+        },
+        {
+        'image': 'VLOGS_FunnyVlogs2_Background_440x800.jpg',
+        'title': 'Funny Vlogs',
+        'icon': 'icons/Icon_Vlogs_FunnyVlogs.png'
+        },
+        {
+        'image': 'VLOGS_AutomotiveVlogs2_Background_900x895.jpg',
+        'title': 'Automotive Vlogs',
+        'icon': 'icons/Icon_Vlogs_AutomotiveVlogs.png'
+        },
+        {
+        'image': 'VLOGS_Vlogging_Background_440x440.jpg',
+        'title': 'Vlogging',
+        'icon': 'icons/Icon_Vlogs_Vlogging.png'
+        },
+        {
+        'image': 'VLOGS_AnimationVlogs_Background_440x440.jpg',
+        'title': 'Animation Vlogs',
+        'icon': 'icons/Icon_Vlogs_AnimationVlogs.png'
+        },
+        {
+        'image': 'VLOGS_TravelVlogs_Background_440x440.jpg',
+        'title': 'Travel Vlogs',
+        'icon': 'icons/Icon_Vlogs_TravelVlogs.png'
+        },
+        {
+        'image': 'VLOGS_ReviewVlogs2_Background_440x440.jpg',
+        'title': 'Review Vlogs',
+        'icon': 'icons/Icon_Vlogs_ReviewVlogs.png'
+        },
+
+
+        ] %}
+
+        {% set channelsTrending = [
+        {
+            'image': 'VLOGS_PopularRightNow_Background_440x800.jpg',
+            'title': 'Popular Right Now',
+            'icon': 'icons/Icon_Vlogs_PopularRightNow.png',
+            'playlistId': 'e2476e0a54e87e96fe04db43fbfdbbb2'
+        },
+        {
+            'image': 'VLOGS_TodaysVlogs2_Background_440x800.jpg',
+            'title': 'Today\'s Vlogs',
+            'icon': 'icons/Icon_Vlogs_TodaysVlogs.png',
+            'playlistId': 'c9cb2819ada38e3e95a37df8b3ae57c8'
+        },
+        {
+            'image': 'VLOGS_LatestVlogs2_Background_440x800.jpg',
+            'title': 'Latest Vlogs',
+            'icon': 'icons/Icon_Vlogs_LatestVlogs.png',
+            'playlistId': 'e6a22b29216ef9e9ea434817bea2fe96'
+
+        },
+        {
+        'image': 'VLOGS_TattooVlogs_Background_440x800.jpg',
+        'title': 'Tattoo Vlogs',
+        'icon': 'icons/Icon_Vlogs_TattooVlogs.png'
+        },
+
+        ] %}
+
+        {% set editorsPick = [
+        {
+        'image': 'VLOGS_ArtVlogs2_Background_900x895.jpg',
+        'title': 'Art Vlogs',
+        'icon': 'icons/Icon_Vlogs_ArtVlogs.png'
+        },
+        {
+        'image': 'VLOGS_Daily-WeeklyVlogs_Background_900x895.jpg',
+        'title': 'Daily & Weekly Vlogs',
+        'icon': 'icons/Icon_Vlogs_Daily-WeeklyVlogs.png'
+        },
+        {
+        'image': 'VLOGS_TechScienceVlogs2_Background_440x440.jpg',
+        'title': 'Tech & Science Vlogs',
+        'icon': 'icons/Icon_Vlogs_Tech-ScienceVlogs.png'
+        },
+        {
+        'image': 'VLOGS_FamilyVlogs2_Background_440x440.jpg',
+        'title': 'Family Vlogs',
+        'icon': 'icons/Icon_Vlogs_FamilyVlogs.png'
+        },
+        {
+        'image': 'VLOGS_MusicVlogs_Background_440x440.jpg',
+        'title': 'Music Vlogs',
+        'icon': 'icons/Icon_Vlogs_MusicVlogs.png'
+        },
+        {
+        'image': 'VLOGS_MotoVlogs2_Background_440x440.jpg',
+        'title': 'Moto Vlogs',
+        'icon': 'icons/Icon_Vlogs_MotoVlogs.png'
+        },
+
+        ] %}
+        {% set otherChannels = [
+        {
+        'image': 'VLOGS_ActivityVlogs_Background_440x440.jpg',
+        'title': 'Activity Vlogs',
+        'icon': 'icons/Icon_Vlogs_ActivityVlogs.png'
+        },
+        {
+        'image': 'VLOGS_CouplesVlogs_Background_440x440.jpg',
+        'title': 'Couples Vlogs',
+        'icon': 'icons/Icon_Vlogs_CouplesVlogs.png'
+        },
+        {
+        'image': 'VLOGS_SquadVlogs_Background_440x440.jpg',
+        'title': 'Squad Vlogs',
+        'icon': 'icons/Icon_Vlogs_SquadVlogs.png'
+        },
+        {
+        'image': 'VLOGS_PranksVlogs_Background_440x440.jpg',
+        'title': 'Pranks Vlogs',
+        'icon': 'icons/Icon_Vlogs_PranksVlogs.png'
+        },
+        {
+        'image': 'VLOGS_TutorialVlogs_Background_440x440.jpg',
+        'title': 'Tutorial Vlogs',
+        'icon': 'icons/Icon_Vlogs_TutorialVlogs.png'
+        },
+        {
+        'image': 'VLOGS_FoodVlogs_Background_440x440.jpg',
+        'title': 'Food Vlogs',
+        'icon': 'icons/Icon_Vlogs_FoodVlogs.png'
+        },
+        {
+        'image': 'VLOGS_YoutubeSeries_Background_440x440.jpg',
+        'title': 'Youtube Series',
+        'icon': 'icons/Icon_Vlogs_YoutubeSeries.png'
+        },
+        {
+        'image': 'VLOGS_GamesVlogs_Background_440x440.jpg',
+        'title': 'Gaming Vlogs',
+        'icon': 'icons/Icon_Vlogs_GamesVlogs.png'
+        },
+        {
+        'image': 'VLOGS_MovieVlogs2_Background_440x440.jpg',
+        'title': 'Movie Vlogs',
+        'icon': 'icons/Icon_Vlogs_MovieVlogs.png'
+        },
+        {
+        'image': 'VLOGS_YoutubeChallenges_Background_440x440.jpg',
+        'title': 'Youtube Challenges',
+        'icon': 'icons/Icon_Vlogs_YoutubeChallenges.png'
+        },
+        {
+        'image': 'VLOGS_ShowVlogs_Background_440x440.jpg',
+        'title': 'Show Vlogs',
+        'icon': 'icons/Icon_Vlogs_ShowVlogs.png'
+        },
+        {
+        'image': 'VLOGS_NewsVlogs2_Background_440x440.jpg',
+        'title': 'News Vlogs',
+        'icon': 'icons/Icon_Vlogs_NewsVlogs.png'
+        },
+        {
+        'image': 'VLOGS_EntrepreneurVlogs_Background_440x440.jpg',
+        'title': 'Entrepreneurs',
+        'icon': 'icons/Icon_Vlogs_EntrepreneurVlogs.png'
+        },
+        {
+        'image': 'VLOGS_PetsVlogs_Background_440x440.jpg',
+        'title': 'Pets Vlog',
+        'icon': 'icons/Icon_Vlogs_PetsVlogs.png'
+        },
+        {
+        'image': 'VLOGS_BooksVlogs2_Background_440x440.jpg',
+        'title': 'Books Vlogs',
+        'icon': 'icons/Icon_Vlogs_BooksVlogs.png'
+        },
+        {
+        'image': 'VLOGS_MakeupVlogs2_Background_440x440.jpg',
+        'title': 'Makeup Vlogs',
+        'icon': 'icons/Icon_Vlogs_MakeupVlogs.png'
+        },
+        {
+        'image': 'VLOGS_HacksVlogs_Background_440x440.jpg',
+        'title': 'Hacks Vlogs',
+        'icon': 'icons/Icon_Vlogs_HacksVlogs.png'
+        },
+        {
+        'image': 'VLOGS_SchoolVlogs_Background_440x440.jpg',
+        'title': 'School Vlogs',
+        'icon': 'icons/Icon_Vlogs_SchoolVlogs.png'
+        },
+        {
+        'image': 'VLOGS_Halloween-ValentinesVlogs2_Background_440x440.jpg',
+        'title': 'Halloween/Valentines Vlogs',
+        'icon': 'icons/Icon_Vlogs_Halloween-ValentinesVlogs.png'
+        },
+        {
+        'image': 'VLOGS_HolidayVlogs2_Background_440x440.jpg',
+        'title': 'Holiday Vlogs',
+        'icon': 'icons/Icon_Vlogs_HolidayVlogs.png'
+        },
+        ] %}
+    {% elseif active_channel == 'news'%}
+
+        {% set channelsTop = [
+        {
+        'image': 'NEWSDOCS_Documentaries_Background_440x800.jpg',
+        'title': 'Documentaries',
+        'icon': 'icons/Icon_NewsDocs_Documentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_HistoryDocumentaries_Background_440x800.jpg',
+        'title': 'History Documentaries',
+        'icon': 'icons/Icon_NewsDocs_HistoryDocumentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_Politics_Background_440x800.jpg',
+        'title': 'Politics',
+        'icon': 'icons/Icon_NewsDocs_Politics.png'
+        },
+        {
+        'image': 'NEWSDOCS_EarthSpaceDocumentaries_Background_440x800.jpg',
+        'title': 'Earth & Space Documentaries',
+        'icon': 'icons/Icon_NewsDocs_EarthSpaceDocumentaries.png'
+        },
+
+        {
+        'image': 'NEWSDOCS_ConstructionDocumentaries_Background_900x895.jpg',
+        'title': 'Construction Documentaries',
+        'icon': 'icons/Icon_NewsDocs_ConstructionDocumentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_History_Background_440x440.jpg',
+        'title': 'History',
+        'icon': 'icons/Icon_NewsDocs_History.png'
+        },
+        {
+        'image': 'NEWSDOCS_WarDocumentaries_Background_440x440.jpg',
+        'title': 'War Documentaries',
+        'icon': 'icons/Icon_NewsDocs_WarDocumentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_WorldNews_Background_440x440.jpg',
+        'title': 'World News',
+        'icon': 'icons/Icon_NewsDocs_WorldNews.png'
+        },
+        {
+        'image': 'NEWSDOCS_USNews_Background_440x440.jpg',
+        'title': 'US News',
+        'icon': 'icons/Icon_NewsDocs_USNews.png'
+        },
+
+
+
+        ] %}
+
+        {% set channelsTrending = [
+        {
+        'image': 'NEWSDOCS_TopStoriesNews_Background_440x800.jpg',
+        'title': 'Top Stories, News',
+        'icon': 'icons/Icon_NewsDocs_TopStoriesNews.png',
+        'playlistId': '6d6a1032bef3b9fe92148dc8a577f330'
+        },
+        {
+        'image': 'NEWSDOCS_TopStoriesBusiness_Background_440x800.jpg',
+        'title': 'Top Stories, Business',
+        'icon': 'icons/Icon_NewsDocs_TopStoriesBusiness.png',
+        'playlistId': '4d60047507125a0fae1aa436643f9d01'
+        },
+        {
+        'image': 'NEWSDOCS_TopStoriesTechnology_Background_440x800.jpg',
+        'title': 'Top Stories, Technology',
+        'icon': 'icons/Icon_NewsDocs_TopStoriesTechnology.png',
+        'playlistId': 'd1708d62dc55558a143c5039befc68c9'
+        },
+        {
+        'image': 'NEWSDOCS_PopularDocumentaryMovies_Background_440x800.jpg',
+        'title': 'Popular Documentary Movies',
+        'icon': 'icons/Icon_NewsDocs_PopularDocumentaryMovies.png',
+        'playlistId': 'c691b10c86d9648d8fc09d26a05dc5ae'
+        },
+
+
+        ] %}
+
+        {% set otherChannels = [
+        {
+        'image': 'NEWSDOCS_WorldUs_Background_900x895.jpg',
+        'title': 'World & US',
+        'icon': 'icons/Icon_NewsDocs_WorldUs.png'
+        },
+        {
+        'image': 'NEWSDOCS_TrailblazerDocumentaries_Background_900x895.jpg',
+        'title': 'Trailblazer Documentaries',
+        'icon': 'icons/Icon_NewsDocs_TrailblazerDocumentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_NewsOthers_Background_440x440.jpg',
+        'title': 'News, Others',
+        'icon': 'icons/Icon_NewsDocs_NewsOthers.png'
+        },
+        {
+        'image': 'NEWSDOCS_CrimeDocumentaries_Background_440x440.jpg',
+        'title': 'Crime Documentaries',
+        'icon': 'icons/Icon_NewsDocs_CrimeDocumentaries.png'
+        },
+        {
+        'image': 'NEWSDOCS_DocumentariesOthers_Background_440x440.jpg',
+        'title': 'Documentaries for Everyone',
+        'icon': 'icons/Icon_NewsDocs_DocumentariesOthers.png'
+        },
+        {
+        'image': 'NEWSDOCS_EnvironmentDocumentaries_Background_440x440.jpg',
+        'title': 'Environment Documentaries',
+        'icon': 'icons/Icon_NewsDocs_EnvironmentDocumentaries.png'
+        },
+
+        ] %}
+
+    {% elseif active_channel == 'kids'%}
+
+        {% set channelsTop = [
+        {
+        'image': 'KIDS_CartoonsMovies_Background_440x800.jpg',
+        'title': 'Cartoons & Movies',
+        'icon': 'icons/Icon_Kids_CartoonMovies.png'
+        },
+        {
+        'image': 'KIDS_FullEpisodes_Background_440x800.jpg',
+        'title': 'Full Episodes',
+        'icon': 'icons/Icon_Kids_FullEpisodes.png'
+        },
+        {
+        'image': 'KIDS_LearningAges4-7_Background_440x800.jpg',
+        'title': 'Learning, Ages 4-7',
+        'icon': 'icons/Icon_Kids_LearningAges4-7.png'
+        },
+        {
+        'image': 'KIDS_KidsVideos_Background_440x800.jpg',
+        'title': 'Kids Videos',
+        'icon': 'icons/Icon_Kids_KidsVideos.png'
+        },
+        {
+        'image': 'KIDS_LearningAges5-10_Background_900x895.jpg',
+        'title': 'Learning, Ages 5-10',
+        'icon': 'icons/Icon_Kids_Learning5-10.png'
+        },
+
+        {
+        'image': 'KIDS_Singing_Background_440x440.jpg',
+        'title': 'Singing',
+        'icon': 'icons/Icon_Kids_Singing.png'
+        },
+        {
+        'image': 'KIDS_LearningAges0-3_Background_440x440.jpg',
+        'title': 'Learning, Ages 0-3',
+        'icon': 'icons/Icon_Kids_LearningAges0-3.png'
+        },
+        {
+        'image': 'KIDS_LearningAges8-13_Background_440x440.jpg',
+        'title': 'Learning, Ages 8-13',
+        'icon': 'icons/Icon_Kids_LearningAges8-13.png'
+        },
+        {
+        'image': 'KIDS_Educational-NurseryRhymes_Background_440x440.jpg',
+        'title': 'Educational & Nursery Rhymes',
+        'icon': 'icons/Icon_Kids_Educational-NurseryRhymes.png'
+        },
+        ] %}
+
+        {% set channelsTrending = [
+        {
+        'image': 'KIDS_ChilldrenChannel_Background_440x800.jpg',
+        'title': 'Children Channel',
+        'icon': 'icons/Icon_Kids_ChildrenChannel.png'
+        },
+        {
+        'image': 'KIDS_CartoonsMovies_Background_440x800.jpg',
+        'title': 'Cartoons',
+        'icon': 'icons/Icon_Kids_Cartoons.png'
+        },
+        {
+        'image': 'KIDS_Educational_Background_440x800.jpg',
+        'title': 'Educational',
+        'icon': 'icons/Icon_Kids_Educational.png'
+        },
+        {
+        'image': 'KIDS_KidsShowsCartoons_Background_440x800.jpg',
+        'title': 'Kids Shows & Cartoons',
+        'icon': 'icons/Icon_Kids_KidsShowsCartoons.png'
+        },
+
+
+        ] %}
+
+        {% set otherChannels = [
+        {
+        'image': 'KIDS_Crafts_Background_900x895.jpg',
+        'title': 'Crafts',
+        'icon': 'icons/Icon_Kids_Crafts.png'
+        },
+        {
+        'image': 'KIDS_Drawing_Background_440x440.jpg',
+        'title': 'Drawing',
+        'icon': 'icons/Icon_Kids_Drawing.png'
+        },
+        {
+        'image': 'KIDS_ToysReview_Background_440x440.jpg',
+        'title': 'Toys Review',
+        'icon': 'icons/Icon_Kids_ToysReview.png'
+        },
+        {
+        'image': 'KIDS_Dancing_Background_440x440.jpg',
+        'title': 'Dancing',
+        'icon': 'icons/Icon_Kids_Dancing.png'
+        },
+        {
+        'image': 'KIDS_CookingBaking_Background_440x440.jpg',
+        'title': 'Cooking & Baking',
+        'icon': 'icons/Icon_Kids_CookingBaking.png'
+        },
+
+
+        ] %}
+    {% endif %}
+
+    <div class="container channels-holder">
+        <h2 style="margin-top: 75px" class="{{ active_channel }}"><span>{{ active_channel | upper}}</span> Top Categories</h2>
+
+        <div class="row channels">
+            {% set counter = 0 %}
+            {% for channel in channelsTop if counter < 4 %}
+                {% set counter = counter+1 %}
+            <div class="col-sm-3 channel">
+                {% include 'inc/channel-item.twig' %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row channels">
+            <div class="col-sm-6 channel">
+                {% include 'inc/channel-item.twig' with {
+                    channel: channelsTop[4]
+                }%}
+            </div>
+            <div class="col-sm-6 channel">
+                <div class="row channels">
+                    {% for channel in channelsTop %}
+                        {% set counter = counter+1 %}
+                        {% if loop.index > 5 %}
+                        <div class="col-sm-6 channel">
+                            {% include 'inc/channel-item.twig' %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="darker-bg">
+        <div class="container channels-holder">
+            <h2 class="{{ active_channel }}">
+                <span>{{ active_channel | upper}}</span> Trending
+                <div class="bars">
+                    <div class="bar"></div>
+                    <div class="bar full"></div>
+                    <div class="bar almost-full"></div>
+                    <div class="bar "></div>
+                    <div class="bar full"></div>
+                </div>
+            </h2>
+
+            <div class="row channels">
+                {% for channel in channelsTrending %}
+                <div class="col-sm-3 channel">
+                    {% include 'inc/channel-item.twig' %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% if editorsPick and editorsPick|length > 0%}
+    <div class="container channels-holder" style="padding-bottom: 35px">
+        <h2 class="{{ active_channel }}"><span>{{ active_channel | upper}}</span> Editor's Pick</h2>
+
+        <div class="row channels">
+            {% set counter = 0 %}
+            {% for channel in editorsPick if counter < 2 %}
+                {% set counter = counter+1 %}
+                <div class="col-sm-6 channel">
+                    {% include 'inc/channel-item.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if editorsPick|length > 2  %}
+        <div class="row channels">
+            {% for channel in editorsPick %}
+                {% if loop.index > 2 %}
+                <div class="col-sm-3 channel">
+                    {% include 'inc/channel-item.twig' %}
+                </div>
+                    {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {#{% set sliderIndex = 0 %}#}
+    {#{% for group, playlists in first_three_groups %}#}
+        {#{% include 'inc/channel-playlist-item.twig' %}#}
+        {#{% set sliderIndex = sliderIndex+1 %}#}
+    {#{% endfor %}#}
+
+    <div class="red-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    {% if active_channel == 'sports' %}
+                        {% set breakerImage = '/assets/img/breaker/sports/BreakerClimbingBuildings.jpg' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'sports', 'playlistId': 'PL-u78Ujla8PvoXaVjbZGCMKUGaKupMjuB'}) %}
+                        {% set breakerTitle = 'Climbing buildings' %}
+                        {% set breakerCategory = 'Climbing' %}
+                        {% set breakerText = 'Buildering (also known as edificeering, urban climbing, structuring, or stegophily) describes the act of climbing on the outside of buildings and other artificial structures. The word "buildering" is a portmanteau, combining the word building with the climbing term bouldering. If done without ropes or protection far off the ground, buildering may be dangerous. It is often practiced outside legal bounds, and is thus mostly undertaken at night.' %}
+                    {% elseif active_channel == 'tv' %}
+                        {% set breakerImage = '/assets/img/breaker/tv/Breaker_Rare_photography.jpg' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'tv', 'playlistId': 'PL_JNljaAQ3XKrB4zWZmvNJblWr85W9spw'}) %}
+                        {% set breakerTitle = 'Rare Photograph' %}
+                        {% set breakerCategory = 'History' %}
+                        {% set breakerText = 'These Rare Historical Photos Will Leave You Speechless. If you think you know your history, get ready to be humbled. The rare photographs show a different perspective of historical events, and you probably wouldn’t find them in any school textbook.' %}
+                    {% elseif active_channel == 'music' or active_channel == 'video' %}
+                        {% set breakerImage = '/assets/img/breaker/music/BreakerRastadub.jpg' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'music', 'playlistId': 'PLjEqPWApF6qWKrewIv1yWCPKmwwFBvkah'}) %}
+                        {% set breakerTitle = 'Rastadub' %}
+                        {% set breakerCategory = 'Reggae' %}
+                        {% set breakerText = 'Bob Marley & The Wailers are the preeminent reggae band that everyone knows. Along with Peter Tosh and Bunny Wailer, Bob Marley started a worldwide revolution that established reggae music as a force to be reckoned with and taken seriously. But casual fans rarely stray from the established, well-known artists to discover new, different acts. What follows is a short list of reggae artists that excludes The Wailers (and associated family and acts) to introduce you to some new, old, and different sounds to get mellow to' %}
+                    {% elseif active_channel == 'kids' %}
+                        {% set breakerImage = '/assets/img/breaker/kids/KIDS_Breaker_610x_2.png' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'kids', 'playlistId': 'PLx9PzJqULCFbyRKTLjKW4uO4sg-MilEmH'}) %}
+                        {% set breakerTitle = 'Teamwork' %}
+                        {% set breakerCategory = 'Learning, Ages 4-7' %}
+                        {% set breakerText = 'Fantastic Playlist  full of magical cartoons. Animation from all over the world, thousands of episodes, endless adventure!' %}
+                    {% elseif active_channel == 'news' %}
+                        {% set breakerImage = '/assets/img/breaker/news/Breaker_NEWS-DOCS__61Breaker.png' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'news', 'playlistId': 'UCZaT_X_mc0BI-djXOlfhqWQ'}) %}
+                        {% set breakerTitle = 'Vice news' %}
+                        {% set breakerCategory = 'News' %}
+                        {% set breakerText = 'The Definitive Guide To Enlightening Information. From every corner of the planet, our immersive, caustic, ground-breaking and often bizarre stories have changed the way people think about culture, crime, art, parties, fashion, protest, the internet and other subjects that don\'t even have names yet. Browse the growing library and discover corners of the world you never knew existed. Welcome to VICE.' %}
+                    {% elseif active_channel == 'vlogs' %}
+                        {% set breakerImage = '/assets/img/breaker/vlogs/Breaker_automotive_610x.png' %}
+                        {% set breakerUrl = path_for('playerPage', {'channel': 'vlogs', 'playlistId': 'PL2HT2VhjWHWRaSodZYxchP82QtXBRs6bF'}) %}
+                        {% set breakerTitle = 'Jan Ollson' %}
+                        {% set breakerCategory = 'Automotive Vlogs' %}
+                        {% set breakerText = 'Young, ambitious, entrepreneurial and, let’s be honest, seriously moneyed, the new set of YouTube car vloggers are gaining fans by the hundreds of thousands, beaming back to their audience something that looks startlingly like the dream petrolhead life.' %}
+                    {% endif %}
+                    <div class="breaker-image" style="background-image: url({{ breakerImage }})">
+                        <a href="{{ breakerUrl }}" class="play"></a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="category">{{ breakerCategory | upper }}</div>
+                    <div class="title">{{ breakerTitle | upper }}</div>
+                    <div class="text">{{ breakerText }}</div>
+                    <a href="{{ breakerUrl }}" class="btn rounded-transparent white">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container channels-holder">
+        <h2 class="{{ active_channel }}"><span>{{ active_channel | upper}}</span> Other Categories</h2>
+
+        <div class="row channels">
+            {% if active_channel == 'kids' %}
+                {% set counter = 0 %}
+                {% for channel in otherChannels if counter < 1 %}
+                    {% set counter = counter+1 %}
+                    <div class="col-sm-6 channel">
+                        {% include 'inc/channel-item.twig' %}
+                    </div>
+                {% endfor %}
+                {% for channel in otherChannels %}
+                    {% if loop.index > 1 %}
+                        <div class="col-sm-3 channel">
+                            {% include 'inc/channel-item.twig' %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% elseif active_channel == 'news' %}
+                {% set counter = 0 %}
+                {% for channel in otherChannels if counter < 2 %}
+                    {% set counter = counter+1 %}
+                    <div class="col-sm-6 channel">
+                        {% include 'inc/channel-item.twig' %}
+                    </div>
+                {% endfor %}
+                {% for channel in otherChannels %}
+                    {% if loop.index > 2 %}
+                        <div class="col-sm-3 channel">
+                            {% include 'inc/channel-item.twig' %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% for channel in otherChannels %}
+                    <div class="col-sm-3 channel">
+                        {% include 'inc/channel-item.twig' %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    {#{% for group, playlists in rest_groups %}#}
+        {#{% include 'inc/channel-playlist-item.twig' %}#}
+        {#{% set sliderIndex = sliderIndex+1 %}#}
+    {#{% endfor %}#}
+
+{% endblock %}

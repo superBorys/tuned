@@ -1,0 +1,155 @@
+{% set type = 'homepage' %}
+{% set title = 'Live Music Videos Streaming & YouTube Video Curating - Tuned Rocks' %}
+{% set metaDescription = 'Looking for online video streaming, curating videos services? Tuned provides all the selected videos for non stop music, sports and entertainment.' %}
+{% set metaKeywords = 'Tuned, nonstop music, music video, videos, streaming service, musical videos, selecting videos, online videos, video curator, online youtube' %}
+
+{% extends 'base.twig' %}
+
+{% block specialIncludes %}
+    <script src="/assets/lib/bootstrap/dist/js/bootstrap.js"></script>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="slider-block">
+        <div class="container text-center">
+            <h2>TRENDING THIS WEEK</h2>
+            <div class="row" id="slider">
+                {% for playlist in trending %}
+                    {% set link = path_for('playerPage', {'channel': playlist.channel, 'playlistId': playlist.id}) %}
+                        <div class="col-xs-4 playlist" onclick='trackOutboundLink({{ link | json_encode | raw }}, "Player", "watchingInTvMode", {{playlist.title | json_encode | raw}}); return false;'>
+                            <div style="position: relative; overflow: hidden">
+                                <img style="z-index: 100" class="play-btn" src="assets/img/breaker-play-btn.png" alt="Play button">
+                                <img style="width: 100%" class="thumb" src="{{playlist.thumbnail}}" alt="Thumbnail for {{playlist.title}}">
+                            </div>
+                            <div class="title {{ playlist.channel }}">{{playlist.title}}</div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="latest music">
+        <div class="container">
+            <h2>LATEST ON MUSIC</h2>
+
+            <div class="row">
+                {% for playlist in latest_music %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'music'}) }}" class="btn rounded-transparent">View All Music</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest tv">
+        <div class="container">
+            <h2>LATEST ON TV</h2>
+
+            <div class="row">
+                {% for playlist in latest_tv %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'tv'}) }}" class="btn rounded-transparent">View All TV</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="red-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="breaker-image" style="background-image: url(/assets/img/breaker/homepage/BreakerBasketballmotivation.jpg)">
+                        <a href="{{ path_for('playerPage', {'channel': 'sports', 'playlistId': 'PL-u78Ujla8PumE50z94-13psd-R4Fti5K'}) }}" class="play"></a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="category">SPORTS</div>
+                    <div class="title">Basketball Motivation</div>
+                    <div class="text">Champions do not become champions when they win an event, but in the hours, weeks, and months, and years they spend preparing for it. The victorious performance itself is merely a demonstration of their championship character. – Michael Jordan</div>
+                    <a href="{{ path_for('playerPage', {'channel': 'tv', 'playlistId': 'PL-u78Ujla8PumE50z94-13psd-R4Fti5K'}) }}" class="btn rounded-transparent white">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest sports">
+        <div class="container">
+            <h2>LATEST ON SPORTS</h2>
+
+            <div class="row">
+                {% for playlist in latest_sports %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'sports'}) }}" class="btn rounded-transparent">View All Sports</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest kids">
+        <div class="container">
+            <h2>LATEST ON KIDS</h2>
+
+            <div class="row">
+                {% for playlist in latest_kids %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'kids'}) }}" class="btn rounded-transparent">View All Kids</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest news">
+        <div class="container">
+            <h2>LATEST ON NEWS & DOCS</h2>
+
+            <div class="row">
+                {% for playlist in latest_news %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'news'}) }}" class="btn rounded-transparent">View All News & Docs</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="latest vlogs">
+        <div class="container">
+            <h2>LATEST ON VLOGS</h2>
+
+            <div class="row">
+                {% for playlist in latest_vlogs %}
+                    {% include 'inc/homepage-latest-playlist-item.twig' %}
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{{ path_for('channelPage', {'channel': 'vlogs'}) }}" class="btn rounded-transparent">View All Vlogs</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $( document ).ready(function() {
+
+
+                $('#slider').slick({
+                    //infinite: false,
+                    //autoplay: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                });
+
+        });
+    </script>
+
+{% endblock %}

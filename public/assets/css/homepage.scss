@@ -1,0 +1,204 @@
+.homepage {
+  .group {
+    .row {
+      //max-height: 177px;
+      //overflow: hidden;
+    }
+  }
+
+
+  .latest {
+    padding-top: 85px;
+    padding-bottom: 85px;
+
+    &.music {
+      background-color: #11101e;
+
+      
+      .btn {
+        color: $green-link-color;
+        border-bottom-color: $green-link-color;
+      }
+    }
+    &.tv {
+      h2 {
+        border-color: $blue-link-color;
+      }
+
+      .video-thumb {
+
+        &:hover {
+          .hover {
+            background-color: rgba(0,228,255,0.7);
+
+          }
+        }
+        .category {
+          background-color: $blue-link-color;
+        }
+      }
+      .btn {
+        color: $blue-link-color;
+        border-bottom-color: $blue-link-color;
+      }
+    }
+    &.sports {
+      h2 {
+        border-color: $yellow-link-color;
+      }
+
+      .video-thumb {
+
+        &:hover {
+          .hover {
+            background-color: rgba(255,195,0,0.7);
+
+          }
+        }
+        .category {
+          background-color: $yellow-link-color;
+        }
+      }
+      .btn {
+        color: $yellow-link-color;
+        border-bottom-color: $yellow-link-color;
+      }
+    }
+    &.kids {
+      h2 {
+        border-color: $greenyellow-link-color;
+      }
+
+      .video-thumb {
+
+        &:hover {
+          .hover {
+            background-color: rgba(174,255,0,0.7);
+
+          }
+        }
+        .category {
+          background-color: $greenyellow-link-color;
+        }
+      }
+      .btn {
+        color: $greenyellow-link-color;
+        border-bottom-color: $greenyellow-link-color;
+      }
+    }
+    &.news {
+      h2 {
+        border-color: $red-link-color;
+      }
+
+      .video-thumb {
+
+        &:hover {
+          .hover {
+            background-color: rgba(232,1,61,0.7);
+
+          }
+        }
+        .category {
+          background-color: $red-link-color;
+        }
+      }
+      .btn {
+        color: $red-link-color;
+        border-bottom-color: $red-link-color;
+      }
+    }
+    &.vlogs {
+      h2 {
+        border-color: $blueviolet-link-color;
+      }
+
+      .video-thumb {
+
+        &:hover {
+          .hover {
+            background-color: rgba(127,32,252,0.7);
+
+          }
+        }
+        .category {
+          background-color: $blueviolet-link-color;
+        }
+      }
+      .btn {
+        color: $blueviolet-link-color;
+        border-bottom-color: $blueviolet-link-color;
+      }
+    }
+    h2 {
+      border-bottom: 6px solid $green-link-color;
+      display: inline-block;
+      line-height: 13px;
+      margin-bottom: 50px;
+    }
+    .video-thumb {
+      width: 100%;
+      height: 194px;
+      //background-image: url(/assets/img/big-slider-image-ex.jpg);
+      background-size: cover;
+      margin-bottom: 30px;
+      position: relative;
+      background-position: center center;
+
+      .hover {
+        display: none;
+        background-color: rgba(0,230,118,0.7);
+        width: 100%;
+        height: 100%;
+      }
+
+      &:hover {
+        .hover {
+          display: block;
+          cursor: pointer;
+
+          .play {
+            background: url(/assets/img/play-btn.png);
+            width: 100%;
+            height: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+          }
+
+        }
+        .category {
+          display: none;
+        }
+        .title {
+          bottom: 20px;
+          background: none;
+          -ms-filter: none;
+          transition: none;
+        }
+      }
+
+      .category {
+        background-color: $green-link-color;
+        display: inline-block;
+        color: black;
+        padding: 5px 17px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      .title {
+        padding: 20px 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        font-weight: bold;
+        font-size: 13pt;
+        transition: opacity .3s linear 0s;
+        background: linear-gradient(180deg,transparent 0,rgba(0,0,0,.8));
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#10000000', endColorstr='#99000000')";
+      }
+    }
+    .btn {
+      margin-top: 10px;
+    }
+  }
+}

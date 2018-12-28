@@ -1,0 +1,41 @@
+{% set type = 'contact' %}
+{% set title = 'Contact Us - Tuned Rocks' %}
+
+{% extends 'base.twig' %}
+
+{% block content %}
+    <div class="header-placeholder"></div>
+    <div class="text-center header-image">
+        <h1>CONTACT US</h1>
+    </div>
+
+    <div class="content container">
+        <h2>GET IN TOUCH</h2>
+
+        <div class="row">
+            <div class="col-sm-6 contact-details">
+                <div class="address">Runeberginkatu 25, Kotka / Finland</div>
+                <div class="phone"><a target="_blank" href="tel:+3584074022906">+358 40 740 22906</a></div>
+                <div class="email"><a target="_blank" href="mailto:info@tuned.rocks">info@tuned.rocks</a></div>
+            </div>
+            <form target="_blank" action="mailto:info@tuned.rocks" class="col-sm-6 form">
+                <label for="">Full Name<span>*</span></label>
+                <input required type="text" name="subject" placeholder="Your full name">
+                <label for="">Email Address<span>*</span></label>
+                <input required type="email" name="from" placeholder="Your email adddress">
+                <label for="">Message<span>*</span></label>
+                <textarea required name="body" id="" rows="6" placeholder="Type message here"></textarea>
+
+                <button class="btn">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="map-container">
+        <iframe width="100%" height="555" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJecHadakMkUYROb7L4Jz1lYI&zoom=14&key=AIzaSyCfaxTyXEagauuObIe9Lwmy4E8ka1B7NyI"
+                allowfullscreen></iframe>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+.contact .header .shapes {
+  top: 230px;
+  background-position: center center; }
+.contact .header-placeholder {
+  height: 70px; }
+.contact .header-image {
+  height: 320px;
+  background-image: url(/assets/img/plasma-bg.jpeg);
+  background-position: center center; }
+  .contact .header-image h1 {
+    margin: 0;
+    line-height: 320px;
+    font-weight: 900; }
+.contact .content .container {
+  padding: 100px 0; }
+.contact p {
+  line-height: 40px;
+  font-size: 13pt;
+  max-width: 900px;
+  margin: 30px auto; }
+
+/*# sourceMappingURL=contact.css.map */

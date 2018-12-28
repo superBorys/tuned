@@ -1,0 +1,157 @@
+{% set type = 'player' %}
+{% set title = pageDetails.title~' - Tuned Rocks' %}
+
+{% extends 'base.twig' %}
+
+{% block specialIncludes %}
+    {% if mode == 'player' %}
+        <meta property="og:url" content="{{base_url~path_for('playerPage', {'channel': active_channel, 'playlistId': pageDetails.id})}}" />
+
+
+    {% else %}
+        <meta property="og:url" content="{{base_url~path_for('playlistPage', {'channel': active_channel, 'playlistId': playlistId, 'videoId': videoId})}}" />
+
+    {% endif %}
+    <meta property="og:title"              content="{{ pageDetails.title }}" />
+    <meta property="og:type"               content="video.other" />
+    <meta property="og:description"        content="TUNED ROCKS - We Stream it, you Rock it!" />
+    <meta property="og:image"              content="{{ pageDetails.thumbnail }}" />
+
+    <base href="/{{ active_channel }}/">
+
+    <script>
+        var initialVideoJSObj = {{ initialVideoJSObj | raw}};
+        var _ACTIVE_CHANNEL = '{{ active_channel}}';
+    </script>
+    <script src="/assets/lib/angular/angular.js"></script>
+    <script src="/assets/js/app.js"></script>
+    {% if mode == 'player' %}
+        <script src="/assets/js/TvPlayerCtrl.js"></script>
+    {% else %}
+        <script src="/assets/js/TvPlaylistCtrl.js"></script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div id="wrapper">
+    <div class="ng-cloak arrow-box" ng-show="videoListAvailable">
+        <div ng-show="!videoListData" class="pending-data text-center">Loading video list...</div>
+        <div ng-repeat="video in videoListData" class="channel" ng-click="playVideo(video.playlist_id, video.video_id)">
+            <span class="channel-name">{% verbatim %}{{ video.title }}{% endverbatim %}</span>
+        </div>
+    </div>
+
+    <div id="remote">
+
+        <div class="ng-cloack channels {{ active_channel }}"{% if mode == 'player' %} ng-init="expandedGroups = {'{{ initialGroup }}': true}{% endif %}">
+            <div ng-show="videoListAvailable" class="ng-cloak tick"></div>
+    {% if mode == 'player' %}
+
+        {% for group, playlists in playlistsGrouped %}
+            <div class="group">
+                {{group}}
+            </div>
+            {% set counter = 0 %}
+            {% set showAll = (group | lower == initialGroup) %}
+            {% for id, playlist in playlists %}
+                <div ng-mouseenter="showVideoList($event, '{{ id }}')" class="channel" data-id="{{ id }}" ng-click="playPlaylistWithId('{{ id }}', true)"
+                     ng-class="{'active': currentPlaylistId == '{{ id }}'{% if counter >= 5 %}, 'hidden': !expandedGroups['{{ group | lower }}']{% endif %}}">
+                    <div ng-show="currentPlaylistId == '{{ id }}'" class="progress-bar" ng-attr-data-progress="{% verbatim %}{{ currentProgress}}{% endverbatim %}"></div>
+                    <span class="channel-number">{{ loop.index }}</span>
+                    <span class="channel-name">{{ playlist.title }}</span>
+                </div>
+                {% set counter = counter+1 %}
+            {% endfor %}
+            {% if playlists | length > 5 and (id != playlistId) %}
+                <div class="channel show-more" ng-click="toggleMore('{{ group | lower }}')">
+                    <span class="channel-number"><i class="icon2" ng-class="{'icon2-arrow-up': expandedGroups['{{ group | lower }}'], 'icon2-arrow-down': !expandedGroups['{{ group | lower }}']}"></i></span>
+                    <span class="channel-name" ng-show="!expandedGroups['{{ group | lower }}']">Show Me More...</span>
+                    <span class="channel-name" ng-show="expandedGroups['{{ group | lower }}']">Show Me Less...</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    {% else %}
+        {% for video in videos %}
+            <div class="channel" data-id="{{ video.video_id }}" ng-click="playVideoWithId('{{ video.video_id }}', true)"
+                 ng-class="{'active': playingVideo.video_id == '{{ video.video_id }}'}">
+
+                <div ng-show="playingVideo.video_id == '{{ video.video_id }}'" class="progress-bar" ng-attr-data-progress="{% verbatim %}{{ currentProgress}}{% endverbatim %}"></div>
+                <span class="channel-number">{{ loop.index }}</span>
+                <span class="channel-name">{{ video.title }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+        </div>
+    </div>
+
+    <div id="remote-bottom">
+        <div class="controls">
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 200px;">
+                        <div class="push-button">
+                            <button class="button" id="mute">
+                                <i class="icon icon-audio-on unmuted" ng-click='switchMute()' aria-hidden="true"
+                                   ng-show='!muted'></i>
+                                <i class="icon icon-audio-off muted" ng-click='switchMute()' aria-hidden="true"
+                                   ng-show='muted'></i>
+                            </button>
+                        </div>
+                        <div class="volume-container">
+                            <input type="range" id="volume" class="volume-control" min="0" max="100" ng-model="volume"
+                                   ng-change="volumeChanged()">
+                        </div>
+                    </td>
+                    <td class="channel-switchers" style="text-align: center">
+
+                        <div class="push-button">
+                            <i ng-click='prev{{ mode == 'player' ? 'Playlist' : 'Video'}}()' class="icon icon-left-arrow" aria-hidden="true" ng-show="!fullscreen"></i>
+                        </div>
+
+                        {% if mode != 'player' %}
+                        <div class="push-button pause-play">
+                            <i ng-click='pause()' class="icon" ng-class="{'icon2-pause': !paused, 'icon2-play': paused}" aria-hidden="true"></i>
+                        </div>
+                        {% endif %}
+
+                        <div class="push-button">
+                            <i ng-click='next{{ mode == 'player' ? 'Playlist' : 'Video'}}()' class="icon icon-right-arrow" aria-hidden="true" ng-show="!fullscreen"></i>
+                        </div>
+                    </td>
+
+
+                    <td style="width: 200px; text-align: right; position: relative">
+                        {% if mode == 'player' %}
+                            <a href="/{{ active_channel }}/{% verbatim %}{{currentPlaylistId}}/{{playingVideo.video_id}}{% endverbatim %}" class="push-button mode-change" style="display: inline-block">
+                                Back to Playlist
+                                <i ng-click='' class="icon icon-play"></i>
+                            </a>
+                        {% else %}
+                            <a href="/{{ active_channel }}/{% verbatim %}{{currentPlaylistId}}{% endverbatim %}" class="push-button mode-change" style="display: inline-block">
+                                Back to Channel
+                                <i ng-click='' class="icon icon-play"></i>
+                            </a>
+                        {% endif %}
+
+                        <div class="push-button" style="display: inline-block">
+                            <button ng-click="toggleFullScreen()" class="button fullscreen">
+                                <i class="icon icon-fullscreen fullscreen" aria-hidden="true" ng-show="!fullscreen"></i>
+                                <i class="icon icon-fullscreen-off windowed" aria-hidden="true" ng-show="fullscreen"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--<div class="tv-switch" ng-click="$ctrl.modeSwitch()"></div>-->
+    </div>
+
+    <div id="overlay" style="display: block; cursor: none;"></div>
+    {% if mode != 'player' %}
+        <div id="pause-overlay" style="display: none; cursor: none;"><span>PAUSED</span></div>
+    {% endif %}
+    <div id="player-container"></div>
+</div>
+{% endblock %}
